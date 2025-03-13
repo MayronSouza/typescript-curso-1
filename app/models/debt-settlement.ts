@@ -1,27 +1,28 @@
 export class DebtSettlement {
-  #date
-  #quantity
-  #value
+  private _date: Date
+  private _quantity: number
+  private _value: number
+  
 
-  constructor(date, quantity, value) {
-    this.#date = date
-    this.#quantity = quantity
-    this.#value = value
+  constructor(date: Date, quantity: number, value: number) {
+    this._date = date
+    this._quantity = quantity
+    this._value = value
   }
 
-  get date() {
-    return this.#date
+  get date(): Date {
+    return this._date
   }
 
-  get quantity() {
-    return this.#quantity
+  get quantity(): number {
+    return this._quantity
   }
 
-  get value() {
-    return this.#value
+  get value(): number {
+    return this._value
   }
 
-  get volume() {
-    return this.#quantity * this.#value
+  get volume(): number {
+    return this._quantity * this._value
   }
 }

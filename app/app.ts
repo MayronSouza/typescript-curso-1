@@ -1,9 +1,9 @@
-import { DebtSettlement } from "./models/debt-settlement.js";
+import { DebtSettlementController } from "./controllers/debt-settlement.controller.js";
 
-const debtSettlement = new DebtSettlement(new Date())
-debtSettlement.quantity = 10
+const debtSettlementController = new DebtSettlementController()
 
-console.log('data da negociação => ', debtSettlement.date)
-console.log('quantidade de negociações => ', debtSettlement.quantity)
-console.log('valor da negociação => ', debtSettlement.value)
-console.log('volume da negociação => ', debtSettlement.volume)
+const form = document.querySelector('#form_debt_settlement')
+form.addEventListener('submit', event => {
+  event.preventDefault()
+  debtSettlementController.add()
+})
