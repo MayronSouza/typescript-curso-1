@@ -16,7 +16,7 @@ export class DebtSettlementsView {
           ${model.listAll().map(debtSettlement => {
             return `
               <tr>
-                <td>TODO</td>
+                <td>${new Intl.DateTimeFormat().format(debtSettlement.date)}</td>
                 <td>${debtSettlement.quantity}</td>
                 <td>${debtSettlement.value}</td>
               </tr>
