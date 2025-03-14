@@ -1,16 +1,19 @@
 import { DebtSettlement } from "../models/debt-settlement.js"
 import { DebtSettlements } from "../models/debt-settlements.js"
+import { DebtSettlementsView } from "../views/debt-settlements.view.js"
 
 export class DebtSettlementController {
   private inputDate: HTMLInputElement
   private inputQuantity: HTMLInputElement
   private inputValue: HTMLInputElement
   private debtSettlements = new DebtSettlements()
+  private debtSettlementView =  new DebtSettlementsView('#debt_settlements_view')
 
   constructor() {
     this.inputDate = document.querySelector('#date')
     this.inputQuantity = document.querySelector('#quantity')
     this.inputValue = document.querySelector('#value')
+    this.debtSettlementView.update()
   }
 
   public add(): void {

@@ -1,11 +1,14 @@
 import { DebtSettlement } from "../models/debt-settlement.js";
 import { DebtSettlements } from "../models/debt-settlements.js";
+import { DebtSettlementsView } from "../views/debt-settlements.view.js";
 export class DebtSettlementController {
     constructor() {
         this.debtSettlements = new DebtSettlements();
+        this.debtSettlementView = new DebtSettlementsView('#debt_settlements_view');
         this.inputDate = document.querySelector('#date');
         this.inputQuantity = document.querySelector('#quantity');
         this.inputValue = document.querySelector('#value');
+        this.debtSettlementView.update();
     }
     add() {
         const debt = this.createDebtSettlement();
