@@ -1,9 +1,11 @@
 import { DebtSettlement } from "../models/debt-settlement.js"
+import { DebtSettlements } from "../models/debt-settlements.js"
 
 export class DebtSettlementController {
   private inputDate: HTMLInputElement
   private inputQuantity: HTMLInputElement
   private inputValue: HTMLInputElement
+  private debtSettlements = new DebtSettlements()
 
   constructor() {
     this.inputDate = document.querySelector('#date')
@@ -13,7 +15,8 @@ export class DebtSettlementController {
 
   public add(): void {
     const debt = this.createDebtSettlement()
-    console.log('Negociação criada => ', debt)
+    this.debtSettlements.add(debt)
+    console.log('Negociações => ', this.debtSettlements.listAll())
     this.cleanForm()
   }
 

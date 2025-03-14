@@ -1,13 +1,16 @@
 import { DebtSettlement } from "../models/debt-settlement.js";
+import { DebtSettlements } from "../models/debt-settlements.js";
 export class DebtSettlementController {
     constructor() {
+        this.debtSettlements = new DebtSettlements();
         this.inputDate = document.querySelector('#date');
         this.inputQuantity = document.querySelector('#quantity');
         this.inputValue = document.querySelector('#value');
     }
     add() {
         const debt = this.createDebtSettlement();
-        console.log('Negociação criada => ', debt);
+        this.debtSettlements.add(debt);
+        console.log('Negociações => ', this.debtSettlements.listAll());
         this.cleanForm();
     }
     createDebtSettlement() {
