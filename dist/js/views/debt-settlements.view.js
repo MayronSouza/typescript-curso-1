@@ -2,7 +2,7 @@ export class DebtSettlementsView {
     constructor(selector) {
         this.element = document.querySelector(selector);
     }
-    template() {
+    template(model) {
         return `
       <table class="table table-hover table-bordered">
         <thead>
@@ -13,11 +13,20 @@ export class DebtSettlementsView {
           </tr>
         </thead>
         <tbody>
+          ${model.listAll().map(debtSettlement => {
+            return `
+              <tr>
+                <td>TODO</td>
+                <td>${debtSettlement.quantity}</td>
+                <td>${debtSettlement.value}</td>
+              </tr>
+            `;
+        })}
         </tbody>
       </table>
     `;
     }
-    update() {
-        this.element.innerHTML = this.template();
+    update(model) {
+        this.element.innerHTML = this.template(model);
     }
 }

@@ -8,11 +8,12 @@ export class DebtSettlementController {
         this.inputDate = document.querySelector('#date');
         this.inputQuantity = document.querySelector('#quantity');
         this.inputValue = document.querySelector('#value');
-        this.debtSettlementView.update();
+        this.debtSettlementView.update(this.debtSettlements);
     }
     add() {
         const debt = this.createDebtSettlement();
         this.debtSettlements.add(debt);
+        this.debtSettlementView.update(this.debtSettlements);
         console.log('Negociações => ', this.debtSettlements.listAll());
         this.cleanForm();
     }

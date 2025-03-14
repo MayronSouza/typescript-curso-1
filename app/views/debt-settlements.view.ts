@@ -1,3 +1,5 @@
+import { DebtSettlements } from "../models/debt-settlements"
+
 export class DebtSettlementsView {
   private element: HTMLElement
 
@@ -5,7 +7,7 @@ export class DebtSettlementsView {
     this.element = document.querySelector(selector)
   }
 
-  private template(): string {
+  private template(model: DebtSettlements): string {
     return `
       <table class="table table-hover table-bordered">
         <thead>
@@ -16,12 +18,21 @@ export class DebtSettlementsView {
           </tr>
         </thead>
         <tbody>
+          ${model.listAll().map(debtSettlement => {
+            return `
+              <tr>
+                <td>TODO</td>
+                <td>${debtSettlement.quantity}</td>
+                <td>${debtSettlement.value}</td>
+              </tr>
+            `
+          })}
         </tbody>
       </table>
     `
   }
 
-  update(): void {
-    this.element.innerHTML = this.template()
+  update(model: DebtSettlements): void {
+    this.element.innerHTML = this.template(model)
   }
 }
